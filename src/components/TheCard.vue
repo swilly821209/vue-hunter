@@ -1,13 +1,13 @@
 <template>
   <div>
     <div>
-      <slot>header</slot>
+      <slot name="header">header</slot>
     </div>
     <div>
-      <slot>body</slot>
+      <slot name="body">body</slot>
     </div>
     <div>
-      <slot>foot</slot>
+      <slot name="foot">foot</slot>
     </div>
   </div>
 </template>
