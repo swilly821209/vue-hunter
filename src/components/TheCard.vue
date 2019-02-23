@@ -1,13 +1,13 @@
 <template>
   <div>
     <div>
-      <slot name="header">header</slot>
+      <slot name="cardHeader">header</slot>
     </div>
     <div>
-      <slot name="body">body</slot>
+      <slot name="cardBody">body</slot>
     </div>
     <div>
-      <slot name="foot">foot</slot>
+      <slot name="cardFoot">foot</slot>
     </div>
   </div>
 </template>
