@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="metabar">
-      <img class="logo" src="..\assets\mIcon.svg" alt="Mastery">
+      <img class="logo" src="..\assets\mIcon.svg" alt="Mastery"/>
       <div class="buttonset">
         <a href="#" class="signIn">Sign in</a>
         <a href="#" class="started">Get started</a>
@@ -11,7 +11,7 @@
       <div class="big-logo"></div>
       <div class="navbar">
         <div class="search">
-          <img src="img/search.svg" class="search-icon" @click="start">
+          <img src="img/search.svg" class="search-icon" @click="start"/>
           <input
             type="text"
             class="search-input"
@@ -19,15 +19,15 @@
             :class="{ 'search-start' : toggle }"
           >
           <a href="#" class="twitter" title="Visit “Vue Mastery” on Twitter">
-            <img src="img/twitter.svg">
+            <img src="img/twitter.svg"/>
           </a>
           <a href="#" class="faceBook" title="Visit “Vue Mastery” on Facebook">
-            <img src="img/facebook.svg">
+            <img src="img/facebook.svg"/>
           </a>
         </div>
         <a href="#" class="follow">Follow</a>
       </div>
-      <hr>
+      <hr/>
     </div>
     <div class="big-content">
       <div class="nuxtImg"></div>
@@ -49,7 +49,7 @@
         <template #cardBody>
           <div>
             <h4 class="card-title">{{ item.title }}</h4>
-            <p>{{ item.content }}</p>
+            <p class="card-paragraph">{{ item.content }}</p>
           </div>
         </template>
         <template #cardFoot>
@@ -69,7 +69,7 @@
                 </template>
                 <template #tooltip-button>
                   <div>
-                    <a href="#" class="follow-button">Follow</a>
+                    <a href="#" class="follow-button" @click.prevent="increase(key)">Follow</a>
                   </div>
                 </template>
               </TheTooltip>
@@ -185,6 +185,10 @@ export default {
   methods: {
     start() {
       this.toggle = !this.toggle;
+    },
+    increase(key){
+      console.log( this.list.key)
+      this.list[key].fan++;
     }
   },
   components: {
@@ -273,7 +277,6 @@ hr {
   background: url("https://cdn-images-1.medium.com/max/1250/1*BkRCeibWDrtp2-K3f28q_g.jpeg");
   width: 655px;
   height: 350px;
-  margin: 0 13px;
   background-size: cover;
   background-position: 50% 50%;
 }
@@ -309,9 +312,15 @@ hr {
   font-size: $size-small-title;
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva,
     Arial, sans-serif;
+  line-height: 1.4;
+}
+.card-paragraph {
+  margin: 15px 0;
+  line-height: 1.2;
 }
 .auother {
   display: flex;
+  margin: 10px 0;
 }
 .auother-introduce {
   margin-left: 10px;

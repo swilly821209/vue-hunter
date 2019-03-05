@@ -8,7 +8,7 @@
         <slot name="tooltip-img">person face</slot>
       </div>
     </div>
-    <hr>
+    <hr/>
     <div class="fan">
       <div>
         <slot name="tooltip-fan">fan</slot>

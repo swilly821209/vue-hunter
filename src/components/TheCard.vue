@@ -14,6 +14,6 @@
 
 <script>
 export default {
-  name: 'TheCard'
+  name: "TheCard"
 }
-</script>
+</script> 
