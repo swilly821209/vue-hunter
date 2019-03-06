@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="metabar">
-      <img class="logo" src="..\assets\mIcon.svg" alt="Mastery"/>
+      <img class="logo" src="@/assets/mIcon.svg" alt="Mastery">
       <div class="buttonset">
         <a href="#" class="signIn">Sign in</a>
         <a href="#" class="started">Get started</a>
@@ -11,7 +11,7 @@
       <div class="big-logo"></div>
       <div class="navbar">
         <div class="search">
-          <img src="img/search.svg" class="search-icon" @click="start"/>
+          <img src="@/assets/search.svg" class="search-icon" @click="start">
           <input
             type="text"
             class="search-input"
@@ -19,32 +19,29 @@
             :class="{ 'search-start' : toggle }"
           >
           <a href="#" class="twitter" title="Visit “Vue Mastery” on Twitter">
-            <img src="img/twitter.svg"/>
+            <img src="@/assets/twitter.svg">
           </a>
           <a href="#" class="faceBook" title="Visit “Vue Mastery” on Facebook">
-            <img src="img/facebook.svg"/>
+            <img src="@/assets/facebook.svg">
           </a>
         </div>
         <a href="#" class="follow">Follow</a>
       </div>
-      <hr/>
+      <hr>
     </div>
     <div class="big-content">
       <div class="nuxtImg"></div>
       <div class="bigContent">
-        <h3 class="bigContent-title">7 Problems you can avoid by using Nuxt.js for your ne...</h3>
-        <p class="bigContent-p">
-          Vue.js is a great choice as a framework for your application. But, there
-          are a
-          few concerns you’ll
-          likely run into.
-        </p>
+        <h3 class="bigContent-title">{{ bigTitle }}</h3>
+        <p class="bigContent-p">{{ bigContent }}</p>
       </div>
     </div>
     <div class="content">
       <TheCard v-for="(item,key) in list" :item="item" :key="key" class="card">
         <template #cardHeader>
-          <img :src="item.src" alt>
+          <div>
+            <img :src="item.src" class="card-img">
+          </div>
         </template>
         <template #cardBody>
           <div>
@@ -93,12 +90,13 @@
 import HelloWorld from "@/components/HelloWorld.vue";
 import TheCard from "@/components/TheCard";
 import TheTooltip from "@/components/TheTooltip";
-import "@/assets/reset.css";
 
 export default {
   name: "home",
   data() {
     return {
+      bigTitle: "7 Problems you can avoid by using Nuxt.js for your ne...",
+      bigContent:  "Vue.js is a great choice as a framework for your application. But, there are a few concerns you’ll likely run into.",
       toggle: false,
       list: [
         {
@@ -186,8 +184,8 @@ export default {
     start() {
       this.toggle = !this.toggle;
     },
-    increase(key){
-      console.log( this.list.key)
+    increase(key) {
+      console.log(this.list.key);
       this.list[key].fan++;
     }
   },
@@ -275,7 +273,7 @@ hr {
 }
 .nuxtImg {
   background: url("https://cdn-images-1.medium.com/max/1250/1*BkRCeibWDrtp2-K3f28q_g.jpeg");
-  width: 655px;
+  width: 670px;
   height: 350px;
   background-size: cover;
   background-position: 50% 50%;
@@ -297,7 +295,7 @@ hr {
   line-height: 1.2;
 }
 .home {
-  max-width: 1000px;
+  max-width: 1056px;
   margin: 0 auto;
 }
 .content {
@@ -306,7 +304,11 @@ hr {
   flex-wrap: wrap;
 }
 .card {
-  width: 315px;
+  width: 326px;
+}
+.card-img {
+  width: 100%;
+  height: 60%;
 }
 .card-title {
   font-size: $size-small-title;
