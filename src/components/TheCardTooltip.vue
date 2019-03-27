@@ -28,8 +28,6 @@ export default {
 $color-black: #000;
 .tooltip {
   position: absolute;
-  height: 100px;
-  padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   z-index: 1;
   background: #fff;
@@ -48,16 +46,15 @@ $color-black: #000;
   box-shadow: 1px 1px 1px -1px $color-black;
 }
 hr {
-  margin: 0 20px;
+  margin: 15px 0;
 }
 .fan {
   display: flex;
-  justify-content: space-between;
-  padding: 20px;
+  justify-content: space-around;
+  margin-bottom: 5px;
 }
 .tooltip-author {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
 }
 </style>

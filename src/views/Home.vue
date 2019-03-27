@@ -1,65 +1,8 @@
 <template>
   <div class="home">
-    <div class="metabar">
-      <img 
-        class="logo" 
-        src="@/assets/mIcon.svg" 
-        alt="Mastery"
-       />
-      <div class="button-set">
-        <a 
-         href="#" 
-         class="sign-in">
-          Sign in
-        </a>
-        <a 
-         href="#" 
-         class="started"
-        >
-         Get started
-        </a>
-      </div>
-    </div>
-    <div class="header">
-      <div class="big-logo"></div>
-      <div class="navbar">
-        <div class="search">
-          <img 
-            src="@/assets/search.svg" 
-            class="search-icon" 
-            @click="start"
-           />
-          <input
-            type="text"
-            class="search-input"
-            placeholder="Search Vue Mastery"
-            :class="{ 'search-start' : toggle }"
-           />
-          <a 
-           href="#" 
-           class="twitter" 
-           title="Visit “Vue Mastery” on Twitter"
-          >
-            <img src="@/assets/twitter.svg" />
-          </a>
-          <a 
-           href="#" 
-           class="facebook" 
-           title="Visit “Vue Mastery” on Facebook"
-          >
-            <img src="@/assets/facebook.svg" />
-          </a>
-        </div>
-        <a 
-         href="#" 
-         class="follow"
-        >
-        Follow
-        </a>
-      </div>
+    <TheHeader />
       <hr>
-    </div>
-    <div class="big-content">
+      <div class="big-content">
       <div 
         class="big-content-img" 
         :style="{ backgroundImage: `url('${newData.bigImg}')` }"
@@ -78,7 +21,7 @@
                 <div>
                   <img 
                     :src="newData.personFace" 
-                    class="person-face"
+                    class="tooltip-face"
                    />
                 </div>
               </template>
@@ -141,7 +84,7 @@
                   <div>
                     <img 
                       :src="item.personFace" 
-                      class="person-face"
+                      class="tooltip-face"
                     >
                   </div>
                 </template>
@@ -176,70 +119,23 @@
       </TheCard>
     </div>
     <hr>
-    <div class="footer">
-      <a 
-      
-       href="#" 
-       class="footer-link" 
-       title="About Vue Mastery"
-      >
-        About Vue Mastery
-      </a>
-      <span class="footer-space"></span>
-      <a 
-
-       href="#" 
-       class="footer-link" 
-       title="Latest Stories for Vue Mastery"
-      >
-        Latest Stories
-      </a>
-      <span class="footer-space"></span>
-      <a
-
-       href="#" 
-       class="footer-link" 
-       title="Archive for Vue Mastery"
-      >
-        Archive
-      </a>
-      <span class="footer-space"></span>
-      <a
-
-       href="#" 
-       class="footer-link"
-      >
-        About Medium
-      </a>
-      <span class="footer-space"></span>
-      <a
-
-       href="#" 
-       class="footer-link"
-      >
-        Terms
-      </a>
-      <span class="footer-space"></span>
-      <a 
-
-       href="#" 
-       class="footer-link"
-      >
-        Privacy
-      </a>
-    </div>
+    <TheFooter />
   </div>
 </template>
 <script>
 // @ is an alias to /src
 import TheCard from "@/components/TheCard";
 import TheCardTooltip from "@/components/TheCardTooltip";
+import TheFooter from "@/components/TheFooter";
+import TheHeader from "@/components/TheHeader";
 
 export default {
   name: "home",
   components: {
+    TheHeader,
     TheCard,
-    TheCardTooltip
+    TheCardTooltip,
+    TheFooter,
   },
   data() {
     return {
@@ -255,7 +151,7 @@ export default {
         time: "Jan 29",
         fan: 123
       },
-      toggle: false,
+     
       list: [
         {
           src:
@@ -339,10 +235,7 @@ export default {
   },
 
   methods: {
-    start() {
-      this.toggle = !this.toggle;
-    },
-    increase(status, key) {
+     increase(status, key) {
       if (status == "card") {
         console.log(this.list.key);
         this.list[key].fan++;
@@ -364,67 +257,7 @@ $size-small-title: 26px;
 $size-small-content: 20px;
 $size-title: 38px;
 $hr: rgba(0, 0, 0, 0.1);
-.metabar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 15px 0;
-}
-.logo {
-  width: 45px;
-  height: 45px;
-}
-.sign-in {
-  margin-right: 16px;
-  text-decoration: none;
-  color: $color-green;
-}
-.started {
-  padding: 5px 16px;
-  border: 1px solid $color-green;
-  border-radius: 4px;
-  text-decoration: none;
-  color: $color-green;
-}
-.header {
-  padding: 0 20px;
-  margin-bottom: 5px;
-}
-.big-logo {
-  width: 100%;
-  height: 200px;
-  background: url("https://cdn-images-1.medium.com/max/952/1*TvOnUZVlpgu-UCWh2kBFEA@2x.png")
-    no-repeat;
-  background-size: 75%;
-  background-position: center;
-}
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.search {
-  display: flex;
-  align-items: center;
-}
-.search-input {
-  display: none;
-  border: none;
-  border-bottom: 1px solid $color-green;
-}
-.search-start {
-  display: block;
-}
-.twitter {
-  margin: 0 8px;
-}
-.follow {
-  padding: 1px 10px;
-  border: 1px solid $color-green;
-  border-radius: 4px;
-  text-decoration: none;
-  color: $color-green;
-}
+
 hr {
   margin: 5px 0;
   border-color: $hr;
@@ -513,18 +346,23 @@ hr {
 }
 .tooltip-position {
   position: relative;
-  top: -150px;
-  right: 70px;
+  top: -135px;
+  right: 50px;
 }
 .tooltip {
-  visibility: hidden;
-  padding: 20px;
+  // visibility: hidden;
+  padding: 10px;
 }
 .tooltip-hover:hover .tooltip {
   visibility: visible;
 }
+.tooltip-face {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
 .follow-button {
-  padding: 0 5px;
+  padding: 3px 8px;
   border: 1px solid $color-green;
   margin: 0 5px;
   text-decoration: none;
@@ -534,21 +372,5 @@ hr {
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
 }
-.footer {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 50px;
-}
-.footer-link {
-  display: block;
-  color: $color-gray;
-  text-decoration: none;
-}
-.footer-space::after {
-  content: "\00B7";
-  margin: 0 3px;
-}
-.footer-link:hover {
-  color: $color-darkblack;
-}
+
 </style>
