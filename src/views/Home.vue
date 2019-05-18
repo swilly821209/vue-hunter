@@ -350,7 +350,7 @@ hr {
   right: 50px;
 }
 .tooltip {
-  // visibility: hidden;
+  visibility: hidden;
   padding: 10px;
 }
 .tooltip-hover:hover .tooltip {
